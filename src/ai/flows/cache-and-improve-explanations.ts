@@ -37,6 +37,11 @@ const cacheAndImproveExplanationsFlow = ai.defineFlow(
     inputSchema: ExplanationInputSchema,
     outputSchema: ExplanationOutputSchema,
     cache: true,
+    rateLimit: {
+      key: 'daily-explanation-limit',
+      limit: 1000,
+      window: 24 * 60 * 60, // 24 hours in seconds
+    },
   },
   async input => {
     const {output} = await prompt(input);
