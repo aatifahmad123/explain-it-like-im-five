@@ -75,8 +75,12 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-full flex-col items-center justify-center bg-background p-4 sm:p-6 md:p-8">
-      <div className="w-full max-w-2xl space-y-8">
+    <main className="relative flex min-h-full flex-col items-center justify-center bg-background p-4 sm:p-6 md:p-8 overflow-hidden">
+      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+      <div className="absolute top-0 right-0 w-72 h-72 bg-accent/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob [animation-delay:2s]"></div>
+      <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-secondary/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob [animation-delay:4s]"></div>
+
+      <div className="relative z-10 w-full max-w-2xl space-y-8">
         <header className="text-center space-y-2">
           <BrainCircuit className="mx-auto h-16 w-16 text-primary" />
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
@@ -160,6 +164,7 @@ export default function Home() {
                   size="icon"
                   onClick={() => setFeedback("down")}
                   aria-label="Downvote explanation"
+                  className="hover:bg-destructive/10 hover:text-destructive"
                 >
                   <ThumbsDown
                     className={cn(
